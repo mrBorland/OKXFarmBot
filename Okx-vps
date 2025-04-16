@@ -1,0 +1,24 @@
+#!/bin/bash
+.
+# Налаштування Git
+git config --global user.name "MrBorland"
+git config --global user.email "borlandx54@gmail.com"
+
+# Ініціалізація репозиторію (якщо ще не створено)
+git init
+git add .
+git commit -m "Auto commit from VPS"
+
+# Додавання токена GitHub (заміни на свій!)
+TOKEN="ghp_YOUR_NEW_TOKEN"
+REPO="github.com/yourusername/your-repo.git"
+
+# Додавання віддаленого репозиторію з токеном
+git remote remove origin 2>/dev/null
+git remote add origin https://$TOKEN@$REPO
+
+# Пуш
+git branch -M main
+git push -u origin main
+
+echo "✅ Код успішно завантажено на GitHub!"
